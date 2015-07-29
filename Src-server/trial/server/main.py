@@ -10,7 +10,8 @@ import json
 
 TEMPLATE_PATHS = [
     ("/", "files/desktop/index/index.html", "files/mobile/index/index.html", {}),
-        None, {}),
+    ("/task/create", "files/desktop/Task-ActivityData/Task-ActivityData.html", None, {}),
+    ("/task/list", "files/desktop/Task-ActivityData/Task-ActivityDataList.html", None, {}),
 ]
 
 REQUEST_PATHS = [

@@ -22,25 +22,25 @@
   <link rel="shortcut icon" href="" type="image/x-icon" property="icon">
   <link rel="icon" href="" type="image/x-icon" property="icon">
   <link rel="stylesheet" type="text/css" href="/files/desktop/common/css/reset.css">
-  <link rel="stylesheet" type="text/css" href="/files/desktop/Home/dashboard.css">
-  <link rel="stylesheet" type="text/css" href="/files/desktop/common/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="/files/desktop/common/css/styles.css">
   <link rel="stylesheet" type="text/css" href="/files/desktop/common/css/navigation.css">
+  <link rel="stylesheet" type="text/css" href="/files/desktop/common/css/archive.css">
+  <script type="text/javascript" src="/files/desktop/common/js/jquery.validate.min.js"></script>
   <script type="text/javascript" src="/files/desktop/common/js/jquery.min.js"></script>
-  <script type="text/javascript" src="js/html5.js"></script>
-  <script type="text/javascript" src="js/menu-script.js"></script>
   <script type="text/javascript">
     $(document).ready(function() {
       $("#my-account").click(function() {
-        $(".top-nav ul li ul").slideToggle();
+        $(".top-nav ul li ul").slideToggle(); 
       })
     })
+
   </script>
 </head>
 <body>
   <div id="wrapper">
     <div class="main-content-area">
       <div class="header-section">
-        <div class="header-content">
+        <!-- <div class="header-content">
           <div class="header-content-inner">
             <div class="site-logo">
               <img src="/images/logo.png" alt="">
@@ -61,23 +61,19 @@
               </div>
             </div>
           </div>
-        </div>
-        {% if user == "business" %} 
+        </div> -->
+        {% if user == "business@domain.com" %} 
           {% include "files/desktop/NavBar/BusinessNavBar.html" %}
-        {% elif user == "it" %}
+        {% elif user == "it@domain.com" %}
           {% include "files/desktop/NavBar/ITNavBar.html" %}
-        {% elif user == "serviceprovider" %}
-          {% include "files/desktop/NavBar/ServiceProviderNavBar.html" %}
-        {% elif user == "knowledge" %}
+        {% elif user == "serviceprovider@domain.com" %}
+          {% include "files/desktop/NavBar/ServiceNavBar.html" %}
+        {% elif user == "knowledge@domain.com" %}
           {% include "files/desktop/NavBar/KnowledgeNavBar.html" %}
-        {% elif user == "inhouse" %}
-          {% include "files/desktop/NavBar/InhouseNavBar.html" %}
-        {% elif user == "client" %}
-          {% include "files/desktop/NavBar/InhouseNavBar.html" %}
-        {% elif user == "techno" %}
+        {% elif user == "client@domain.com" %}
+          {% include "files/desktop/NavBar/ClientNavBar.html" %}
+        {% elif user == "techno@domain.com" %}
           {% include "files/desktop/NavBar/TechnoNavBar.html" %}
-        {% else %}
-          {% include "files/desktop/NavBar/NavBar.html" %}
         {% endif %}
         {% block menu %} {% endblock %}
       </div>
