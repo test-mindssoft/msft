@@ -29,15 +29,17 @@ TABLES['test'] = (
     "  PRIMARY KEY (`emp_no`)"
     ") ENGINE=InnoDB")
 
-TABLES['test'] = (
-    "CREATE TABLE IF NOT EXISTS `test` ("
-    "  `emp_no` int(11) NOT NULL AUTO_INCREMENT,"
-    "  `birth_date` date NOT NULL,"
-    "  `first_name` varchar(14) NOT NULL,"
-    "  `last_name` varchar(16) NOT NULL,"
-    "  `gender` enum('M','F') NOT NULL,"
-    "  `hire_date` date NOT NULL,"
-    "  PRIMARY KEY (`emp_no`)"
+TABLES['taskactivity'] = (
+    "CREATE TABLE IF NOT EXISTS `taskactivity` ("
+    "  `taskid` int(11) NOT NULL AUTO_INCREMENT,"
+    "  `activityname` varchar(45) NOT NULL,"
+    "  `activitytype` varchar(45) NOT NULL,"
+    "  `duration` varchar(45) NOT NULL,"
+    "  `repeats` varchar(45) NOT NULL,"
+    "  `authority` varchar(45) NOT NULL,"
+    "  `slaprate` varchar(45) NOT NULL,"
+    "  `penaltyrate` varchar(45) NOT NULL,"
+    "  PRIMARY KEY (`taskid`)"
     ") ENGINE=InnoDB")
 
 

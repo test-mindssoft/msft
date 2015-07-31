@@ -14,11 +14,6 @@ TEMPLATE_PATHS = [
     ("/task/list", "files/desktop/Task-ActivityData/Task-ActivityDataList.html", None, {}),
 ]
 
-REQUEST_PATHS = [
-    # ("/post/login", LoginHandler),
-] 
-
-
 #
 # TemplateHandler
 #
@@ -46,6 +41,23 @@ class TemplateHandler(tornado.web.RequestHandler) :
         output = template.render(**self.__parameters)
         self.write(output)
 
+class TaskCreateHandler(tornado.web.RequestHandler):
+    def post(self):
+		json_data = json.loads(self.request.body)
+        data = json_data["data"]
+        activityname = data["activityname"]
+        taskid = data["taskid"]
+    	#getid=0
+      	if(getid == "0"):
+        	sql = "INSERT INTO taskactivity(activityname) VALUES ('%s')" % (activityname)
+        	cursor.execute(sql)
+        	db.commit()
+        get = post # <--------------
+
+REQUEST_PATHS = [
+    # ("/post/login", LoginHandler),
+    (r"/task/create", TaskCreateHandler)
+] 
 
 def run_server() :
     application_urls = []

@@ -27,55 +27,11 @@
   <link rel="stylesheet" type="text/css" href="/files/desktop/common/css/archive.css">
 
   <script type="text/javascript" src="/files/desktop/common/js/jquery.min.js"></script>
-    <script type="text/javascript" src="/files/desktop/common/js/jquery.validate.min.js"></script>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $("#my-account").click(function() {
-        $(".top-nav ul li ul").slideToggle(); 
-      })
-    })
-
-  </script>
-</head>
+ </head>
 <body>
   <div id="wrapper">
     <div class="main-content-area">
       <div class="header-section">
-        <!-- <div class="header-content">
-          <div class="header-content-inner">
-            <div class="site-logo">
-              <img src="/images/logo.png" alt="">
-            </div>
-            <div class="top-nav-section">
-              <p>Welcome <span>{% if user == "None" %}Guest{% else %}{{user}}{% endif %} </span></p>
-              <div class="top-nav">
-                <ul>
-                  <li id="my-account"><a href="#">My Account &nbsp;<span><img src="/images/dropdown-arrow.png" alt=""></span></a>
-                    <ul>
-                      <li><a href="/profile">View Profile</a></li>
-                      <li><a href="/change_password">Change Password</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="/home">Dashboard</a></li>
-                  <li><a href="/login">Logout</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div> -->
-        {% if user == "business@domain.com" %} 
-          {% include "files/desktop/NavBar/BusinessNavBar.html" %}
-        {% elif user == "it@domain.com" %}
-          {% include "files/desktop/NavBar/ITNavBar.html" %}
-        {% elif user == "serviceprovider@domain.com" %}
-          {% include "files/desktop/NavBar/ServiceNavBar.html" %}
-        {% elif user == "knowledge@domain.com" %}
-          {% include "files/desktop/NavBar/KnowledgeNavBar.html" %}
-        {% elif user == "client@domain.com" %}
-          {% include "files/desktop/NavBar/ClientNavBar.html" %}
-        {% elif user == "techno@domain.com" %}
-          {% include "files/desktop/NavBar/TechnoNavBar.html" %}
-        {% endif %}
         {% block menu %} {% endblock %}
       </div>
       {% block content %} {% endblock %}
