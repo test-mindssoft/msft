@@ -1,0 +1,101 @@
+{% extends "files/desktop/Header/Header.html" %}
+{% block content %}
+
+<div class="content-container width75">
+  <div class="content-area">
+    <div class="add-container">
+      <div class="add-container-heading">Locations<span class="error-message"></span></div>
+       <div class="form-container-outer">
+            <div class="form-container-grid-table">
+              <table>
+                <tr align="left">
+                  <th width="20%">Country</th>
+                  <th width="20%">Region</th>
+                  <th width="20%">Province</th>
+                  <th width="20%">State</th>
+                  <th width="20%">District</th>
+                </tr>
+                <tr>
+                  <td>
+                    <ul>
+                      {% for country in countries %}
+                      <li id="{{country}}"><a href="#">{{countries[country]}}</a></li>
+                      {% endfor %}
+                    </ul>
+                  </td>
+                  <td>
+                    <ul>
+                      {% for region in regions %}
+                      <li id="{{region[0]}}"><a href="#">{{region[1]}}</a></li>
+                      {% endfor %}
+                    </ul>
+                  </td>
+                  <td>
+                    <ul>
+                      {% for province in provinces %}
+                      <li id="{{province[0]}}"><a href="#">{{province[1]}}</a></li>
+                      {% endfor %}
+                    </ul>
+                  </td>
+                  <td>
+                    <ul>
+                      {% for state in states %}
+                        <li id="{{state[0]}}"><a href="#">{{state[1]}}</a></li>
+                      {% endfor %}
+                    </ul>
+                  </td>
+                  <td>
+                    <ul>
+                      {% for district in districts %}
+                        <li id="{{district[0]}}"><a href="#">{{district[1]}}</a></li>
+                      {% endfor %}                     
+                    </ul>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="location-details">
+              <span class="label-text">Location</span>
+              <span><input type="text" name="location" class="location-textbox" placeholder="Enter Location"> <input type="submit" value="Save" name="save" class="btn-save"></span>
+              <div class="clearfix"></div>
+              <div class="location-list">
+                <table>
+                  <tr>
+                    <th>#</th>
+                    <th align="left">Location</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                  </tr>
+                   <tr>
+                    <td width="5%" align="center"></td>
+                     <td><input type="text" name="location-name" class="filter-text-box"></td>
+                    <td width="10%" align="center"></td>
+                    <td width="10%" align="center"></td>
+                  </tr>
+                  <tr>
+                    <td width="5%" align="center">1</td>
+                    <td width="75%" class="location-name">Location 1</td>
+                    <td width="10%" align="center"><img src="/images/icon-edit.png"></td>
+                    <td width="10%" align="center"><img src="/images/icon-delete.png"></td>
+                  </tr>
+                  <tr>
+                    <td width="5%" align="center">2</td>
+                    <td width="75%" class="location-name">Location 2</td>
+                    <td width="10%" align="center"><img src="/images/icon-edit.png"></td>
+                    <td width="10%" align="center"><img src="/images/icon-delete-inactive.png"></td>
+                  </tr>
+                  <tr>
+                    <td width="5%" align="center">3</td>
+                    <td width="75%" class="location-name">Location 3</td>
+                    <td width="10%" align="center"><img src="/images/icon-edit.png"></td>
+                    <td width="10%" align="center"><img src="/images/icon-delete-inactive.png"></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+
+  </div>
+</div>
+</div>
+{% endblock %}

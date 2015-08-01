@@ -8,15 +8,19 @@ from trial.server.constants import ROOT_PATH, HTTP_PORT
 from user_agents import parse
 import json
 
+from trial.model import LocationModel as locationdb
+from trial.server import countries as countriesdb 
+
 TEMPLATE_PATHS = [
     ("/", "files/desktop/index/index.html", "files/mobile/index/index.html", {}),
     ("/task/create", "files/desktop/Task-ActivityData/Task-ActivityData.html", None, {}),
     ("/task/list", "files/desktop/Task-ActivityData/Task-ActivityDataList.html", None, {}),
+    ("/location", "files/desktop/LocationMaster/LocationMaster.html", 
+        None,
+        {"states":locationdb.getStates(),"districts":locationdb.getDistricts(),
+        "regions":locationdb.getRegions(),"provinces":locationdb.getProvinces(),
+        "countries":countriesdb.countries}),
 ]
-
-#
-# TemplateHandler
-#
 
 template_loader = jinja2.FileSystemLoader(
     os.path.join(ROOT_PATH, "Src-client")
@@ -43,11 +47,11 @@ class TemplateHandler(tornado.web.RequestHandler) :
 
 class TaskCreateHandler(tornado.web.RequestHandler):
     def post(self):
-		json_data = json.loads(self.request.body)
+        json_data = json.loads(self.request.body)
         data = json_data["data"]
         activityname = data["activityname"]
         taskid = data["taskid"]
-    	#getid=0
+        #getid=0
       	if(getid == "0"):
         	sql = "INSERT INTO taskactivity(activityname) VALUES ('%s')" % (activityname)
         	cursor.execute(sql)
@@ -55,7 +59,6 @@ class TaskCreateHandler(tornado.web.RequestHandler):
         get = post # <--------------
 
 REQUEST_PATHS = [
-    # ("/post/login", LoginHandler),
     (r"/task/create", TaskCreateHandler)
 ] 
 

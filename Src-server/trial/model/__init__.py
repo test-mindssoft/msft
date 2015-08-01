@@ -2,32 +2,16 @@ import MySQLdb as mysql
 
 MYSQL_HOST = "localhost"
 MYSQL_USER = "root"
-MYSQL_PASSWORD = ""
+MYSQL_PASSWORD = "123456"
 MYSQL_DATABASE = "msft"
 
+__all__ = [
+    "connect_db",
+    "getCursor",
+    "close_connection",
+]
+
 TABLES = {}
-
-TABLES['employees'] = (
-    "CREATE TABLE IF NOT EXISTS `employees` ("
-    "  `emp_no` int(11) NOT NULL AUTO_INCREMENT,"
-    "  `birth_date` date NOT NULL,"
-    "  `first_name` varchar(14) NOT NULL,"
-    "  `last_name` varchar(16) NOT NULL,"
-    "  `gender` enum('M','F') NOT NULL,"
-    "  `hire_date` date NOT NULL,"
-    "  PRIMARY KEY (`emp_no`)"
-    ") ENGINE=InnoDB")
-
-TABLES['test'] = (
-    "CREATE TABLE IF NOT EXISTS `test` ("
-    "  `emp_no` int(11) NOT NULL AUTO_INCREMENT,"
-    "  `birth_date` date NOT NULL,"
-    "  `first_name` varchar(14) NOT NULL,"
-    "  `last_name` varchar(16) NOT NULL,"
-    "  `gender` enum('M','F') NOT NULL,"
-    "  `hire_date` date NOT NULL,"
-    "  PRIMARY KEY (`emp_no`)"
-    ") ENGINE=InnoDB")
 
 TABLES['taskactivity'] = (
     "CREATE TABLE IF NOT EXISTS `taskactivity` ("
@@ -40,6 +24,34 @@ TABLES['taskactivity'] = (
     "  `slaprate` varchar(45) NOT NULL,"
     "  `penaltyrate` varchar(45) NOT NULL,"
     "  PRIMARY KEY (`taskid`)"
+    ") ENGINE=InnoDB")
+
+TABLES['state'] = (
+    "CREATE TABLE IF NOT EXISTS `state` ("
+    "  `state_id` int(11) NOT NULL AUTO_INCREMENT,"
+    "  `state_name` varchar(45) NOT NULL,"
+    "  PRIMARY KEY (`state_id`)"
+    ") ENGINE=InnoDB")
+
+TABLES['district'] = (
+    "CREATE TABLE IF NOT EXISTS `district` ("
+    "  `district_id` int(11) NOT NULL AUTO_INCREMENT,"
+    "  `district_name` varchar(45) NOT NULL,"
+    "  PRIMARY KEY (`district_id`)"
+    ") ENGINE=InnoDB")
+
+TABLES['province'] = (
+    "CREATE TABLE IF NOT EXISTS `province` ("
+    "  `province_id` int(11) NOT NULL AUTO_INCREMENT,"
+    "  `province_name` varchar(45) NOT NULL,"
+    "  PRIMARY KEY (`province_id`)"
+    ") ENGINE=InnoDB")
+
+TABLES['region'] = (
+    "CREATE TABLE IF NOT EXISTS `region` ("
+    "  `region_id` int(11) NOT NULL AUTO_INCREMENT,"
+    "  `region_name` varchar(45) NOT NULL,"
+    "  PRIMARY KEY (`region_id`)"
     ") ENGINE=InnoDB")
 
 
