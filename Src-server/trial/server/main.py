@@ -47,11 +47,16 @@ class TemplateHandler(tornado.web.RequestHandler) :
 
 class TaskListHandler(tornado.web.RequestHandler):
     def get(self):
-        query = "select activityname, activitytype, duration, repeats, authority, slaprate, penaltyrate  from taskactivty"         
-        print query
-        c= cursor.execute (query)
-        datalist=cursor.fetchall()
-        self.render('Task-ActivityDataList.html', datalist=datalist)  
+        rows = _execute('SELECT * FROM taskactivty')
+        data_list = []
+        for row in rows:
+            data_list.append(row)
+        self.write(json.dumps(data_list))
+       # query = "select activityname, activitytype, duration, repeats, authority, slaprate, penaltyrate  from taskactivty"         
+       # print query
+       # c= cursor.execute (query)
+       # datalist=cursor.fetchall()
+       # self.render('Task-ActivityDataList.html', datalist=datalist)  
 
 
 class TaskCreateHandler(tornado.web.RequestHandler):
@@ -85,9 +90,9 @@ REQUEST_PATHS = [
         json_ = tornado.escape.json_encode(js)
         self.write(json_)
 
-#		json_data = json.loads(self.request.body)
- #       data = json_data["data"]
-  #      activity1 = data["activityname"]
+        #json_data = json.loads(self.request.body)
+        #data = json_data["data"]
+        #activity1 = data["activityname"]
    #     getid = data["taskid"]
     	#getid=0
     #  	if(getid == "0"):
