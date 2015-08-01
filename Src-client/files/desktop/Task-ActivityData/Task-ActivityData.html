@@ -1,0 +1,70 @@
+{% extends "files/desktop/Header/Header.html" %}
+{% block content %}
+<script type="text/javascript" src="/files/desktop/Task-ActivityData/task-activitydata.js"></script>
+
+<div class="single-column-form-outer width40">
+  <div class="content-area">
+      <div class="single-column-form-inner">
+        <div class="single-column-header">Task / Activity Data<span id="error-message"></span></div>
+          <input type="hidden" value="0" name="taskid" id="taskid">
+          <div class="single-column-input-row">
+          <div class="input-row">
+            <div class="single-column-field-label">Activity Name:</div>
+            <div class="single-column-field-input">
+              <input type="text" value="" id="activityname" name="activityname"  class="input-box">
+            </div>
+          </div>
+          <div class="input-row">
+            <div class="single-column-field-label">Activity Type</div>
+            <div class="single-column-field-input">
+                <select class="input-box" name="activitytype" id="activitytype">
+                <option value="">Select</option>
+                <option>Recurring</option>
+                <option>One Time</option>
+              </select>
+              </div>
+          </div>
+          <div class="input-row">
+            <div class="single-column-field-label">Duration (Days):</div>
+            <div class="single-column-field-input">
+                <input type="text" class="input-box" name="duration" id="duration">
+              </div>
+          </div>
+          <div class="input-row">
+            <div class="single-column-field-label">Repeats</div>
+            <div class="single-column-field-input">
+              <select class="input-box" id="repeats" name="repeats">
+                <option value="">Select</option>
+                <option>Monthly</option>
+                <option>Yearly</option>
+              </select>
+            </div>
+          </div>
+          <div class="input-row">
+            <div class="single-column-field-label">Authority</div>
+            <div class="single-column-field-input">
+                <input type="text" name="authority" class="input-box">
+            </div>
+          </div>
+          <div class="input-row">
+            <div class="single-column-field-label">Slab Rate:</div>
+            <div class="single-column-field-input">
+                <input type="text" class="input-box" name="slabrate">
+            </div>
+          </div>
+          <div class="input-row">
+            <div class="single-column-field-label">Penalty Rate:</div>
+            <div class="single-column-field-input">
+              <input type="text" class="input-box" name="penaltyrate">
+            </div>
+          </div> 
+        </div>
+        <div class="submit-button-container">
+          <input type="reset" name="cancel" value="Cancel" class="btn-cancel"  onclick="location.href='/task/list'" >
+            &nbsp;&nbsp;
+          <input type="submit" name="submit" value="Submit" id="submit" class="btn-submit">
+        </div>
+    </div>
+    </div>
+</div>
+{% endblock %} 
