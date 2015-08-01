@@ -41,22 +41,54 @@ class TemplateHandler(tornado.web.RequestHandler) :
         output = template.render(**self.__parameters)
         self.write(output)
 
+class TaskListHandler(tornado.web.RequestHandler):
+    def get(self):
+        query = "select activityname, activitytype, duration, repeats, authority, slaprate, penaltyrate  from taskactivty"         
+        print query
+        c= cursor.execute (query)
+        datalist=cursor.fetchall()
+        self.render('Task-ActivityDataList.html', datalist=datalist)  
+
+
 class TaskCreateHandler(tornado.web.RequestHandler):
+    def initialize(self, url, handler):
+        self.url = url
+        self.handler = handler
+
+    def get(self):
+        self.write("Hello, world")
+
     def post(self):
-		json_data = json.loads(self.request.body)
+        json_data = json.loads(self.request.body)
         data = json_data["data"]
         activityname = data["activityname"]
         taskid = data["taskid"]
+        sql = "INSERT INTO taskactivity(activityname) VALUES ('%s')" % (activityname)
+        cursor.execute(sql)
+        db.commit()
+        self.set_header('Content-Type', 'application/json')
+        json_ = tornado.escape.json_encode(js)
+        self.write(json_)
+
+#		json_data = json.loads(self.request.body)
+ #       data = json_data["data"]
+  #      activity1 = data["activityname"]
+   #     getid = data["taskid"]
     	#getid=0
-      	if(getid == "0"):
-        	sql = "INSERT INTO taskactivity(activityname) VALUES ('%s')" % (activityname)
-        	cursor.execute(sql)
-        	db.commit()
-        get = post # <--------------
+    #  	if(getid == "0"):
+     #   	sql = "INSERT INTO taskactivity(activityname) VALUES ('%s')" % (activityname)
+      #  	cursor.execute(sql)
+       # 	db.commit()
+       # self.set_header('Content-Type', 'application/json')
+       # json_ = tornado.escape.json_encode(js)
+       # self.write(json_)
+       # get = post # <--------------
 
 REQUEST_PATHS = [
     # ("/post/login", LoginHandler),
-    (r"/task/create", TaskCreateHandler)
+    ("/post/task/create", TaskCreateHandler),
+    ("/task/create/(.*)", TaskCreateHandler),
+    (r"/task/list", TaskListHandler),  
 ] 
 
 def run_server() :
